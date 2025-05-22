@@ -1,0 +1,21 @@
+Please run the commands in the provided order to avoid version conflicts. 
+
+!pip install transformers # Install the Transformers library from Hugging Face (provides pretrained language models like BERT, GPT, T5, etc.)
+
+!pip install torch
+
+import numpy as np
+import pandas as pd
+import re
+import torch
+
+from transformers import AutoTokenizer # universal tokenizer loader from Hugging Face, auto-selects the right tokenizer based on the model name you give it.
+# Load Bio_ClinicalBERT tokenizer
+tokenizer = AutoTokenizer.from_pretrained("emilyalsentzer/Bio_ClinicalBERT") # Trained on clinical texts like discharge summaries, Comes with its own vocabulary and tokenization rules.
+import nltk # NLTK is needed for cleaning the text before tokenization by BERT (remove punctuation, numbers, stopwords)
+from nltk.corpus import stopwords
+nltk.download('stopwords')
+stop_words = set(stopwords.words('english'))
+
+from transformers import AutoModel
+model = AutoModel.from_pretrained("emilyalsentzer/Bio_ClinicalBERT")
