@@ -1,4 +1,4 @@
-# BERT_Embeddings
+# BERTopic:  Topic Modeling with Bidirectional Encoder Representations from Transformers (BERT)
 
 BERTopic is a Machine Learning framework that leverages transformers, whose architecture is effective at capturing contextual relationships in large volumes of unstructured text. One of the powerful applications of transformer-based models is topic modeling — unsupervised clustering of textual data into learned, semantically meaningful topics. BERTopic combines contextual embeddings, dimensionality reduction, and clustering into a cohesive pipeline. As such, BERTopic is particularly well-suited for clinical text, which is often complex (a pinnacle of professional jargon!). 
 
