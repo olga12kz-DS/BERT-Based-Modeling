@@ -1,0 +1,51 @@
+Please run the commands in the provided order to avoid version conflicts. 
+
+# Restart the session after the installation.
+# Install compatible versions of required libraries.
+!pip install \
+    umap-learn==0.5.3 \
+    hdbscan==0.8.33 \
+    bertopic==0.15.0 \
+    scikit-learn \
+    gensim \
+    torch \
+    nltk \
+    plotly
+
+# General
+import pandas as pd
+import numpy as np
+import re
+from collections import Counter, defaultdict # Count: frequencies of elements; defaultdict: auto-initialize missing keys
+from itertools import product # for testing ranges of parameters for dim reduction and clustering
+import pickle # for saving model results, example: saving a variable, e.g., topics_by_model_chest
+import ast # convert strings to actual lists
+import pkg_resources # provides tools for managing Python package metadata and runtime dependencies (checking hdbscan's version)
+pd.options.display.max_colwidth = 15000
+pd.options.display.max_rows = 200
+
+# Specific to NLP (BERT, gensim, nltk)
+import bertopic
+from bertopic import BERTopic
+from umap import UMAP
+import hdbscan
+from hdbscan import HDBSCAN
+# from BioSentVec.sent2vec import Sent2vecModel
+from gensim.models import Phrases # for gensim phrase detection and building bigrams, pre-trained phrase-detection model
+from gensim.models.phrases import Phraser # lightweight, optimized version of a trained Phrases model in Gensim, faster than the full model
+import nltk
+nltk.download('punkt_tab') # downloads the Punkt tokenizer models, which are used by NLTK for sentence tokenization and word tokenization
+from nltk.tokenize import word_tokenize
+
+# Evaluation
+import sklearn
+from sklearn.metrics import silhouette_score # assess cluster separability after HDBSCAN
+from sklearn.preprocessing import normalize # Normalize to unit length for cosine-like behavior with Euclidean distance (re-scaling)
+from sklearn.feature_extraction.text import CountVectorizer, TfidfTransformer
+
+# Visualization
+import matplotlib.pyplot as plt
+import seaborn as sns
+import plotly.express as px
+import plotly.graph_objects as go # imports low-level figure-building interface, used to build complex, interactive visualizations from scratch by explicitly defining each plot element.
+from matplotlib.colors import LinearSegmentedColormap # creates custom color gradients (colormaps) for visualizations in matplotlib or seaborn.
